@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pulse</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- UNCONFIGURED -->
+      <div id="view-unconfigured" class="view" hidden>
+        <div class="empty-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="40" height="40" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 32 H22 L26 26 L30 32 L34 12 L40 52 L44 32 L48 32 L51 28 L54 32 L60 32"/>
+          </svg>
+        </div>
+        <p class="empty-headline" data-i18n="setupPrompt"></p>
+        <button id="btn-open-options" class="btn btn-primary btn-full">
+          <span data-i18n="openSetup"></span>
+        </button>
+      </div>
+
+      <!-- IDLE / WORKING / WARNED / SNOOZED -->
+      <div id="view-main" class="view" hidden>
+        <div id="status-bar" class="status-bar">
+          <div class="status-meta">
+            <span id="state-dot" class="state-dot" aria-hidden="true"></span>
+            <span id="state-label" class="state-label"></span>
+          </div>
+          <span id="last-sync" class="last-sync"></span>
+        </div>
+
+        <div class="hero">
+          <div id="elapsed-time" class="elapsed-time" aria-live="polite">0:00:00</div>
+          <div id="elapsed-meta" class="elapsed-meta"></div>
+        </div>
+
+        <div id="progress-track" class="progress-track" hidden>
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+
+        <div class="action-row">
+          <button id="btn-stamp-in"  class="btn btn-green btn-full" hidden>
+            <span data-i18n="clockInBtn"></span>
+          </button>
+          <button id="btn-stamp-out" class="btn btn-red btn-full" hidden>
+            <span data-i18n="clockOutBtn"></span>
+          </button>
+        </div>
+
+        <div id="action-message" class="action-message" role="status" aria-live="polite" hidden></div>
+
+        <div class="footer">
+          <div class="footer-toggles">
+            <label class="overlay-toggle">
+              <input type="checkbox" id="toggle-overlay" />
+              <span class="toggle-track" aria-hidden="true"><span class="toggle-thumb"></span></span>
+              <span class="toggle-label" data-i18n="optionsOverlayEnable">Anzeige auf jeder Webseite</span>
+            </label>
+            <label class="overlay-toggle" id="row-toggle-pip">
+              <input type="checkbox" id="toggle-pip" />
+              <span class="toggle-track" aria-hidden="true"><span class="toggle-thumb"></span></span>
+              <span class="toggle-label" data-i18n="popupPipToggle">Ausklappbares schwebendes Fenster</span>
+            </label>
+          </div>
+          <button id="btn-settings" class="btn-icon" aria-label="Settings">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M19.4 13a7.5 7.5 0 0 0 0-2l2-1.6-2-3.4-2.4 1A7.4 7.4 0 0 0 15 5.6L14.6 3h-4l-.4 2.6A7.4 7.4 0 0 0 8 6.9L5.6 6 3.6 9.4l2 1.6a7.5 7.5 0 0 0 0 2l-2 1.6 2 3.4 2.4-1c.6.5 1.3.9 2 1.2L10.6 21h4l.4-2.6c.7-.3 1.4-.7 2-1.2l2.4 1 2-3.4-2-1.6Zm-7.4 2a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Loading -->
+      <div id="view-loading" class="view">
+        <p class="loading-text" data-i18n="loading"></p>
+      </div>
+    </div>
+    <script type="module" src="popup.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" role="img" aria-label="Pulse icon">
+  <defs>
+    <linearGradient id="pulseBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0F8674"/>
+      <stop offset="1" stop-color="#0A5A4D"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded teal square -->
+  <rect width="128" height="128" rx="28" fill="url(#pulseBg)"/>
+
+  <!-- Subtle top highlight for depth -->
+  <rect x="6" y="6" width="116" height="2" rx="1" fill="#ffffff" opacity="0.20"/>
+
+  <!-- ECG heartbeat trace: flat, small P wave, tall R peak, deep S trough, small T wave, flat -->
+  <path
+    d="M 14 64 L 40 64 L 46 58 L 52 64 L 60 26 L 70 102 L 78 64 L 84 64 L 88 58 L 92 64 L 114 64"
+    stroke="#FBF8F2"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Coral accent dot at the R-peak: the heartbeat highlight -->
+  <circle cx="60" cy="26" r="6.5" fill="#E26A56"/>
+</svg>

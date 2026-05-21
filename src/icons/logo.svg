@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 96" fill="none" role="img" aria-label="Pulse">
+  <defs>
+    <linearGradient id="pulseBgWord" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0F8674"/>
+      <stop offset="1" stop-color="#0A5A4D"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon mark on the left -->
+  <g transform="translate(8 8)">
+    <rect width="80" height="80" rx="18" fill="url(#pulseBgWord)"/>
+    <path
+      d="M 8 40 L 26 40 L 30 35 L 34 40 L 39 16 L 45 64 L 50 40 L 54 40 L 57 36 L 60 40 L 72 40"
+      stroke="#FBF8F2"
+      stroke-width="6.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <circle cx="39" cy="16" r="4" fill="#E26A56"/>
+  </g>
+
+  <!-- Wordmark: "pulse" in tight geometric sans, deep teal -->
+  <text
+    x="104"
+    y="63"
+    font-family="'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif"
+    font-weight="700"
+    font-size="54"
+    fill="#0E7C6B"
+    letter-spacing="-2"
+  >pulse</text>
+</svg>

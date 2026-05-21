@@ -1,0 +1,19 @@
+{
+  "name": "pulse",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "icons": "node scripts/build-icons.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.4.0",
+    "@types/chrome": "^0.0.268",
+    "sharp": "^0.34.5",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.0"
+  }
+}

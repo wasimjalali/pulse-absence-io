@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Pulse - Arbeitszeit-Begleiter für absence.io",
+  "version": "1.0.0",
+  "description": "Pulse: Arbeitszeit-Begleiter für absence.io. Schwebende Anzeige, Pausen- und Ausstempel-Erinnerungen.",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "idle",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "https://app.absence.io/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.ts",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "src/icons/icon-16.png",
+      "48": "src/icons/icon-48.png",
+      "128": "src/icons/icon-128.png"
+    }
+  },
+  "options_page": "src/options/options.html",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["src/content/absence-overlay.ts"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "icons": {
+    "16": "src/icons/icon-16.png",
+    "48": "src/icons/icon-48.png",
+    "128": "src/icons/icon-128.png"
+  }
+}

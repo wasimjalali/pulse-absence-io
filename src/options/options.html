@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pulse Setup</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="page-header">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="30" height="30" fill="none" stroke="currentColor" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 32 H22 L26 26 L30 32 L34 12 L40 52 L44 32 L48 32 L51 28 L54 32 L60 32"/>
+          </svg>
+        </div>
+        <div>
+          <h1 data-i18n="optionsTitle">Pulse</h1>
+          <p class="page-subtitle" data-i18n="optionsSubtitle">Im Rhythmus deines Arbeitstags, für absence.io</p>
+        </div>
+      </header>
+
+      <!-- Connected status card -->
+      <section id="connected-card" class="card connected-card" hidden>
+        <div class="connected-meta">
+          <span class="status-pill">
+            <span class="status-pill-dot"></span>
+            <span id="connected-text" data-i18n="optionsConnectedPill">Verbunden</span>
+          </span>
+          <span id="connected-user-id" class="connected-user-id"></span>
+        </div>
+        <button type="button" id="btn-disconnect" class="btn btn-ghost" data-i18n="optionsDisconnect">Trennen</button>
+      </section>
+
+      <!-- Connect form (hidden once credentials are stored) -->
+      <section id="connect-card" class="card">
+        <h2 class="card-title" data-i18n="optionsConnectTitle">Konto verbinden</h2>
+        <p class="card-subtitle" data-i18n="optionsConnectSubtitle">Erstelle einen API-Schlüssel in absence.io und füge beide Werte unten ein.</p>
+
+        <details class="instructions">
+          <summary data-i18n="optionsInstructionsSummary">API-Schlüssel erstellen: so geht’s</summary>
+          <ol>
+            <li>
+              <span data-i18n="optionsInstructionStep1">Bei</span>
+              <a href="https://app.absence.io" target="_blank" rel="noopener noreferrer">app.absence.io</a>
+              <span data-i18n-suffix="optionsInstructionStep1End"></span>
+            </li>
+            <li data-i18n="optionsInstructionStep2">Oben rechts auf dein Profilbild klicken</li>
+            <li data-i18n="optionsInstructionStep3">Benutzereinstellungen → Integrationen öffnen</li>
+            <li data-i18n="optionsInstructionStep4">API-Schlüssel generieren klicken (Neu generieren macht den alten Schlüssel ungültig)</li>
+            <li data-i18n="optionsInstructionStep5">Beide Werte kopieren und in die passenden Felder einfügen</li>
+          </ol>
+        </details>
+
+        <form id="credentials-form" novalidate>
+          <div class="field">
+            <label for="hawk-id">
+              <span data-i18n="optionsHawkIdLabel">Schlüssel-Kennung</span>
+              <span class="hint" data-i18n="optionsHawkIdHint">24-stellige Hex-Zeichenfolge</span>
+            </label>
+            <input
+              id="hawk-id"
+              type="text"
+              spellcheck="false"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              placeholder="z. B. 6a0181bd08a70c36861962bf"
+            />
+            <span id="hawk-id-count" class="char-count" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="hawk-key">
+              <span data-i18n="optionsHawkKeyLabel">Schlüssel</span>
+              <span class="hint" data-i18n="optionsHawkKeyHint">geheimer Wert</span>
+            </label>
+            <input
+              id="hawk-key"
+              type="password"
+              spellcheck="false"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              placeholder="Schlüssel hier einfügen"
+            />
+            <span id="hawk-key-count" class="char-count" aria-live="polite"></span>
+          </div>
+
+          <button type="submit" id="submit-btn" class="btn btn-primary" data-i18n="optionsVerifyBtn">Prüfen und speichern</button>
+        </form>
+
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+      </section>
+
+      <!-- Settings (floating widget + general preferences) -->
+      <section class="card">
+        <h2 class="card-title" data-i18n="optionsPreferences">Einstellungen</h2>
+
+        <div class="card-section">
+          <h3 class="section-title" data-i18n="optionsOverlayTitle">Schwebende Anzeige</h3>
+
+          <div class="field">
+            <label class="row-toggle">
+              <input type="checkbox" id="pref-overlay-enabled" />
+              <span class="toggle-track" aria-hidden="true"><span class="toggle-thumb"></span></span>
+              <span class="toggle-label" data-i18n="optionsOverlayEnable">Anzeige einblenden, wenn eingestempelt</span>
+            </label>
+          </div>
+
+          <div class="field">
+            <label for="pref-overlay-position" data-i18n="optionsOverlayPosition">Position</label>
+            <select id="pref-overlay-position" class="select">
+              <option value="bottom-right" data-i18n="optionsPosBottomRight">Unten rechts</option>
+              <option value="bottom-left"  data-i18n="optionsPosBottomLeft">Unten links</option>
+              <option value="top-right"    data-i18n="optionsPosTopRight">Oben rechts</option>
+              <option value="top-left"     data-i18n="optionsPosTopLeft">Oben links</option>
+            </select>
+            <p class="field-hint">
+              <span data-i18n="optionsResetPositionHint">Du kannst die Anzeige auch frei mit der Maus verschieben.</span>
+              <button type="button" id="pref-reset-position" class="btn-link" data-i18n="optionsResetPosition">Position zurücksetzen</button>
+            </p>
+          </div>
+
+          <div class="field">
+            <label class="row-toggle">
+              <input type="checkbox" id="pref-pip-enabled" />
+              <span class="toggle-track" aria-hidden="true"><span class="toggle-thumb"></span></span>
+              <span class="toggle-label" data-i18n="optionsPipEnable">Ausklappbares Fenster erlauben, das über allen Tabs bleibt</span>
+            </label>
+            <p class="field-hint" data-i18n="optionsPipEnableHint">Fügt der schwebenden Anzeige eine „Ausklappen“-Schaltfläche hinzu.</p>
+          </div>
+
+          <details class="advanced">
+            <summary data-i18n="optionsOverlayDenylistLabel">Anzeige auf diesen Seiten ausblenden</summary>
+            <div class="advanced-body">
+              <textarea
+                id="pref-overlay-denylist"
+                class="textarea"
+                rows="5"
+                spellcheck="false"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                placeholder="# z. B. Banking, persönliche Konten&#10;mail.google.com&#10;*.deutsche-bank.de&#10;*paypal*"
+              ></textarea>
+              <p class="field-hint" data-i18n="optionsOverlayDenylistHint">Ein Muster pro Zeile. Exakte Hostnamen, Subdomain-Platzhalter (*.paypal.com) oder Glob-Muster (*bank*). Zeilen mit # sind Kommentare.</p>
+              <button type="button" id="pref-denylist-save" class="btn btn-secondary" data-i18n="optionsSavePrefs">Einstellungen speichern</button>
+              <div id="denylist-status" class="status" role="status" aria-live="polite"></div>
+            </div>
+          </details>
+        </div>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <div class="card-section">
+          <h3 class="section-title" data-i18n="optionsGeneralTitle">Allgemein</h3>
+
+          <form id="preferences-form">
+            <div class="field">
+              <label for="pref-language" data-i18n="optionsLanguage">Sprache</label>
+              <select id="pref-language" class="select">
+                <option value="de" data-i18n="optionsLanguageDe">Deutsch</option>
+                <option value="en" data-i18n="optionsLanguageEn">English</option>
+              </select>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="pref-break-1" data-i18n="optionsBreak1">Erste Pausenerinnerung nach</label>
+                <div class="number-input">
+                  <input id="pref-break-1" type="number" min="0.1" max="12" step="0.1" />
+                  <span class="number-suffix" data-i18n="optionsHoursSuffix">Stunden</span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="pref-break-2" data-i18n="optionsBreak2">Letzte Pausenerinnerung nach</label>
+                <div class="number-input">
+                  <input id="pref-break-2" type="number" min="0.1" max="12" step="0.1" />
+                  <span class="number-suffix" data-i18n="optionsHoursSuffix">Stunden</span>
+                </div>
+              </div>
+            </div>
+            <p class="field-hint" data-i18n="optionsBreakHint">Nach ArbZG §4 ist nach 6 Std eine 30-min Pause Pflicht. Standard: 5,0 und 5,5 Stunden.</p>
+
+            <button type="submit" id="prefs-submit" class="btn btn-secondary" data-i18n="optionsSavePrefs">Einstellungen speichern</button>
+            <div id="prefs-status" class="status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>v1.0.0</span>
+        <span class="sep">·</span>
+        <a href="https://app.absence.io" target="_blank" rel="noopener noreferrer">absence.io</a>
+      </footer>
+    </div>
+    <script type="module" src="options.ts"></script>
+  </body>
+</html>

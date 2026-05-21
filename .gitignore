@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env*
+*.local
+.DS_Store
+
+# Local AI agent state (not for public)
+.claude/
+
+# Build artifacts (released as GitHub release assets, not tracked)
+*.zip
