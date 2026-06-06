@@ -37,7 +37,7 @@ Then load `dist/` as an unpacked extension at `chrome://extensions`.
 
 ## Install (prebuilt zip)
 
-Grab `pulse-1.0.0.zip` from the [Releases](https://github.com/wasimjalali2004-art/pulse-absence-io/releases) page. In Chrome:
+Grab `pulse-1.0.0.zip` from the [Releases](https://github.com/wasimjalali/pulse-absence-io/releases) page. In Chrome:
 
 1. Unzip somewhere.
 2. Open `chrome://extensions`, enable "Developer mode".

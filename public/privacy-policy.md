@@ -36,7 +36,7 @@ All data is stored in your browser's local storage. You can delete it at any tim
 
 ## Open source
 
-Pulse is open-source under the MIT license. Source code is available at <https://github.com/wasimjalali2004-art/pulse-absence-io>.
+Pulse is open-source under the MIT license. Source code is available at <https://github.com/wasimjalali/pulse-absence-io>.
 
 ## Contact
 
