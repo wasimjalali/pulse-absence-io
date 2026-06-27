@@ -1,5 +1,7 @@
 # Pulse
 
+**See your work hours in your browser, and never forget to clock out.**
+
 A Chrome extension for [absence.io](https://www.absence.io/) users. Shows your current work time in the browser toolbar, fires a one-time clock-out reminder after 8 hours, and nudges you to take a break (German ArbZG §4) at 5h and 5h30 of continuous work.
 
 > **Status: archived, unmaintained.** Built for an internal use case that is no longer active. Released here as a reference for anyone using absence.io who wants a browser-resident time tracker. Fork freely. No support, no roadmap, no PRs will be reviewed.
@@ -19,7 +21,7 @@ Bilingual (Deutsch / English). Default language is German.
 
 - Manifest V3. TypeScript strict.
 - Vite + `@crxjs/vite-plugin` for bundling.
-- Hawk SHA-256 request signing implemented directly with `crypto.subtle` in `src/background/hawk-signer.ts` (no `@hapi/hawk` dependency — it has no browser build).
+- Hawk SHA-256 request signing implemented directly with `crypto.subtle` in `src/background/hawk-signer.ts` (no `@hapi/hawk` dependency, it has no browser build).
 - Service worker owns the state machine (`UNCONFIGURED → IDLE → WORKING → WARNED → SNOOZED`) and polls absence.io on alarms (1 min while working, 5 min while idle, exponential backoff on failure).
 - Closed Shadow DOM for the content-script overlay so page styles and scripts can't reach it.
 - No frontend framework. Plain DOM in popup, options, and content script.
