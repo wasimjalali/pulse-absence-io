@@ -2,6 +2,11 @@
 
 **See your work hours in your browser, and never forget to clock out.**
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+![Chrome Manifest V3](https://img.shields.io/badge/Chrome-Manifest%20V3-4285F4?logo=googlechrome&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Status](https://img.shields.io/badge/status-archived-inactive)
+
 A Chrome extension for [absence.io](https://www.absence.io/) users. Shows your current work time in the browser toolbar, fires a one-time clock-out reminder after 8 hours, and nudges you to take a break (German ArbZG §4) at 5h and 5h30 of continuous work.
 
 > **Status: archived, unmaintained.** Built for an internal use case that is no longer active. Released here as a reference for anyone using absence.io who wants a browser-resident time tracker. Fork freely. No support, no roadmap, no PRs will be reviewed.
